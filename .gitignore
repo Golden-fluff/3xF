@@ -7,127 +7,19 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# Build outputs
-dist/
-dist-ssr/
-build/
-out/
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage
-.grunt
-
-# Bower dependency directory
-bower_components
-
-# Environment variables - CRITIQUE POUR LA SÉCURITÉ
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.env.*.local
-
-# Fichiers de configuration locaux
-.vscode/
-!.vscode/extensions.json
-.idea/
-*.swp
-*.swo
-*~
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Cache directories
-.npm
-.eslintcache
-.parcel-cache
-.cache
-.next
-.nuxt
+node_modules
+dist
+dist-ssr
+*.local
 
 # Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-# Temporary folders
-tmp/
-temp/
-
-# Local configuration
-*.local
-
-# SSL certificates (si utilisés localement)
-*.pem
-*.key
-*.crt
-*.csr
-
-# Fichiers de sauvegarde
-*.bak
-*.backup
-*.old
-
-# Fichiers sensibles
-secrets/
-private/
-credentials/
-keys/
-
-# Documentation générée
-docs/api/
-
-# Fichiers de base de données locaux
-*.sqlite
-*.sqlite3
-*.db
-
-# Fichiers de profiling
-*.prof
-
-# Lockfiles (optionnel selon la stratégie)
-# package-lock.json
-# yarn.lock
-
-# Rapports de sécurité
-security-audit.json
-vulnerability-report.json
-
-# Fichiers de déploiement sensibles
-deploy.sh
-.deploy/
-
-# Archives
-*.zip
-*.tar.gz
-*.rar
-
-# Fichiers système
-.fuse_hidden*
-.nfs*
+.env
