@@ -1,0 +1,387 @@
+/* Import sécurisé des fonts avec CSP compliance - déplacé vers HTML */
+/* @import supprimé pour éviter les requêtes non contrôlées */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS sécurisées - pas d'exposition de données sensibles */
+:root {
+  --primary: #0A0F2C;
+  --cyan: #00FFFF;
+  --steel: #2D2D2D;
+  --alert: #FF3B3B;
+  --success: #00D26A;
+  
+  /* Variables pour les animations sécurisées */
+  --transition-fast: 0.15s;
+  --transition-normal: 0.2s;
+  --transition-slow: 0.3s;
+  
+  /* Espacements sécurisés */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+}
+
+@layer base {
+  /* Configuration de base sécurisée */
+  html {
+    scroll-behavior: smooth;
+    /* Prévention du défilement horizontal non intentionnel */
+    overflow-x: hidden;
+  }
+  
+  body {
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+    background-color: var(--primary);
+    color: white;
+    /* Protection contre les attaques de sélection de texte */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Protection contre le glisser-déposer non autorisé */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+  }
+
+  /* Réactiver la sélection pour les éléments de contenu */
+  p, span, h1, h2, h3, h4, h5, h6, li, td, th {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+
+  /* Sécurisation des inputs */
+  input, textarea, select {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    /* Protection contre l'auto-complétion non sécurisé */
+    autocomplete: off;
+  }
+
+  /* Sécurisation des liens */
+  a {
+    /* Protection contre le tabnabbing */
+    rel: noopener noreferrer;
+  }
+
+  /* Protection contre les iframes non autorisées */
+  iframe {
+    sandbox: allow-scripts allow-same-origin;
+  }
+}
+
+@layer components {
+  /* Classes de police sécurisées avec fallbacks */
+  .font-orbitron {
+    font-family: 'Orbitron', 'Arial Black', 'Arial', sans-serif;
+    font-display: swap; /* Performance et sécurité */
+  }
+
+  .font-mono {
+    font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+    font-display: swap;
+  }
+
+  /* Classes de couleur sécurisées */
+  .bg-primary {
+    background-color: var(--primary);
+  }
+
+  .text-cyan {
+    color: var(--cyan);
+  }
+
+  .bg-cyan {
+    background-color: var(--cyan);
+  }
+
+  .border-cyan {
+    border-color: var(--cyan);
+  }
+
+  .text-steel {
+    color: var(--steel);
+  }
+
+  .bg-steel {
+    background-color: var(--steel);
+  }
+
+  .border-steel {
+    border-color: var(--steel);
+  }
+
+  .text-alert {
+    color: var(--alert);
+  }
+
+  .bg-alert {
+    background-color: var(--alert);
+  }
+
+  .border-alert {
+    border-color: var(--alert);
+  }
+
+  .text-success {
+    color: var(--success);
+  }
+
+  .bg-success {
+    background-color: var(--success);
+  }
+
+  .border-success {
+    border-color: var(--success);
+  }
+
+  /* Variantes d'opacité sécurisées - utilisation de custom properties */
+  .bg-cyan\/10 { background-color: rgb(0 255 255 / 0.1); }
+  .bg-cyan\/20 { background-color: rgb(0 255 255 / 0.2); }
+  .bg-cyan\/30 { background-color: rgb(0 255 255 / 0.3); }
+  .bg-cyan\/50 { background-color: rgb(0 255 255 / 0.5); }
+
+  .bg-steel\/5 { background-color: rgb(45 45 45 / 0.05); }
+  .bg-steel\/10 { background-color: rgb(45 45 45 / 0.1); }
+  .bg-steel\/20 { background-color: rgb(45 45 45 / 0.2); }
+  .bg-steel\/30 { background-color: rgb(45 45 45 / 0.3); }
+  .bg-steel\/40 { background-color: rgb(45 45 45 / 0.4); }
+  .bg-steel\/50 { background-color: rgb(45 45 45 / 0.5); }
+
+  .bg-alert\/10 { background-color: rgb(255 59 59 / 0.1); }
+  .bg-alert\/20 { background-color: rgb(255 59 59 / 0.2); }
+
+  .bg-success\/10 { background-color: rgb(0 210 106 / 0.1); }
+  .bg-success\/20 { background-color: rgb(0 210 106 / 0.2); }
+
+  .bg-primary\/30 { background-color: rgb(10 15 44 / 0.3); }
+  .bg-primary\/50 { background-color: rgb(10 15 44 / 0.5); }
+  .bg-primary\/90 { background-color: rgb(10 15 44 / 0.9); }
+
+  .border-cyan\/30 { border-color: rgb(0 255 255 / 0.3); }
+  .border-cyan\/40 { border-color: rgb(0 255 255 / 0.4); }
+  .border-cyan\/50 { border-color: rgb(0 255 255 / 0.5); }
+
+  .border-steel\/20 { border-color: rgb(45 45 45 / 0.2); }
+  .border-steel\/30 { border-color: rgb(45 45 45 / 0.3); }
+  .border-steel\/40 { border-color: rgb(45 45 45 / 0.4); }
+
+  .border-alert\/40 { border-color: rgb(255 59 59 / 0.4); }
+  .border-alert\/50 { border-color: rgb(255 59 59 / 0.5); }
+
+  .border-success\/30 { border-color: rgb(0 210 106 / 0.3); }
+  .border-success\/40 { border-color: rgb(0 210 106 / 0.4); }
+  .border-success\/50 { border-color: rgb(0 210 106 / 0.5); }
+
+  /* États hover sécurisés avec transitions contrôlées */
+  .hover\:border-cyan\/50:hover { 
+    border-color: rgb(0 255 255 / 0.5); 
+    transition: border-color var(--transition-normal) ease;
+  }
+  .hover\:border-success\/50:hover { 
+    border-color: rgb(0 210 106 / 0.5); 
+    transition: border-color var(--transition-normal) ease;
+  }
+  .hover\:border-alert\/50:hover { 
+    border-color: rgb(255 59 59 / 0.5); 
+    transition: border-color var(--transition-normal) ease;
+  }
+
+  .hover\:bg-cyan\/10:hover { 
+    background-color: rgb(0 255 255 / 0.1); 
+    transition: background-color var(--transition-normal) ease;
+  }
+  .hover\:bg-success\/10:hover { 
+    background-color: rgb(0 210 106 / 0.1); 
+    transition: background-color var(--transition-normal) ease;
+  }
+  .hover\:bg-alert\/10:hover { 
+    background-color: rgb(255 59 59 / 0.1); 
+    transition: background-color var(--transition-normal) ease;
+  }
+
+  /* Ombres sécurisées - limitées pour éviter les attaques de performance */
+  .shadow-cyan\/10 { 
+    box-shadow: 0 10px 15px -3px rgb(0 255 255 / 0.1), 0 4px 6px -2px rgb(0 255 255 / 0.05); 
+  }
+  .shadow-cyan\/25 { 
+    box-shadow: 0 10px 15px -3px rgb(0 255 255 / 0.25), 0 4px 6px -2px rgb(0 255 255 / 0.1); 
+  }
+
+  /* Pattern de grille sécurisé - optimisé pour les performances */
+  .grid-pattern {
+    background-image: 
+      radial-gradient(circle at 25px 25px, rgba(0, 255, 255, 0.08) 2px, transparent 0),
+      radial-gradient(circle at 75px 75px, rgba(0, 255, 255, 0.04) 2px, transparent 0);
+    background-size: 100px 100px;
+    background-position: 0 0, 50px 50px;
+    /* Optimisation des performances */
+    will-change: auto;
+    transform: translateZ(0);
+  }
+
+  /* Liens de navigation sécurisés */
+  .nav-link {
+    @apply font-mono text-sm text-gray-400 transition-colors duration-200 relative;
+    /* Protection contre le clickjacking */
+    pointer-events: auto;
+    /* Limitation des transitions pour éviter les attaques de performance */
+    transition: color var(--transition-normal) ease;
+  }
+
+  .nav-link:hover {
+    color: var(--cyan);
+  }
+
+  .nav-link:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    /* Animation sécurisée */
+    animation: fade-in var(--transition-fast) ease;
+  }
+
+  /* Boutons sécurisés */
+  .btn-secure {
+    @apply inline-block px-4 py-2 font-mono text-sm transition-all duration-200;
+    /* Protection contre le double-clic */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Protection contre les attaques de timing */
+    cursor: pointer;
+  }
+
+  .btn-secure:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  /* Formulaires sécurisés */
+  .form-input-secure {
+    @apply w-full px-3 py-2 bg-steel/20 border border-steel/40 text-white font-mono text-sm;
+    @apply focus:outline-none focus:border-cyan/50 focus:ring-1 focus:ring-cyan/30;
+    /* Protection contre l'auto-complétion malveillante */
+    autocomplete: off;
+    /* Protection contre les attaques par injection */
+    spellcheck: false;
+  }
+}
+
+/* Effets de lueur sécurisés - optimisés pour les performances */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  /* Limitation pour éviter les attaques de performance */
+  filter: blur(0);
+}
+
+.glow-success {
+  box-shadow: 0 0 20px rgba(0, 210, 106, 0.2);
+  filter: blur(0);
+}
+
+.glow-alert {
+  box-shadow: 0 0 20px rgba(255, 59, 59, 0.2);
+  filter: blur(0);
+}
+
+/* Animations sécurisées - limitées et optimisées */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+  /* Optimisation des performances */
+  will-change: opacity;
+}
+
+.animate-fade-in {
+  animation: fade-in var(--transition-normal) ease;
+}
+
+.animate-slide-in {
+  animation: slide-in var(--transition-slow) ease;
+}
+
+/* Protection contre les attaques CSS */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Protection contre l'impression non autorisée */
+@media print {
+  * {
+    display: none !important;
+  }
+  
+  body::before {
+    content: "Document protégé - Impression non autorisée";
+    display: block !important;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    margin: 20px;
+  }
+}
+
+/* Masquage sécurisé */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
